@@ -1,6 +1,11 @@
 #version 150
+
+#define PI 3.141592653589793
+
 uniform mat4 modelViewProjectionMatrix;
 uniform float time;
+uniform int vertex_num;
+uniform vec3 r_seed;
 in vec4 position;
 
 
@@ -15,6 +20,8 @@ float rnd(vec2 n){
 }
 
 void main() {
-    vec3 v_position = vec3(vec2(gl_VertexID / 20. - time * 20., 30. * sin(2 * gl_VertexID + time)), rnd(vec2(gl_VertexID, 0.348)) * 20.);
+    float th = (gl_VertexID + time) / float(vertex_num) * 2 * PI;
+    float r = 500. * sin(2 * th);
+    vec3 v_position = vec3(cos(th) * r + rnd(vec2(gl_VertexID, r_seed.x)) * 30., sin(th) * r + rnd(vec2(gl_VertexID, r_seed.y)) * 30., 500. * sin(2 * th)  + rnd(vec2(gl_VertexID, r_seed.z)) * 30.);
     gl_Position = modelViewProjectionMatrix * vec4(v_position, 1.);
 }
