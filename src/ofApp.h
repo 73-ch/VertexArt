@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 
+using namespace glm;
+
 class ofApp : public ofBaseApp{
 
 	public:
@@ -21,4 +23,11 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
+    ofVboMesh vbo;
+    ofShader shader;
+    ofEasyCam cam;
+    ofDirectory dir;
+    int selected_shader;
+    
+    int vertex_num;
 };
