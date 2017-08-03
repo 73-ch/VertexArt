@@ -27,6 +27,7 @@ void ofApp::draw(){
 
     shader.begin();
     shader.setUniform1f("time", ofGetElapsedTimef());
+    shader.setUniform1i("vertex_num", vertex_num);
     vbo.setMode(OF_PRIMITIVE_POINTS);
     vbo.draw();
     shader.end();
