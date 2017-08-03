@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetBackgroundColor(0);
-    vertex_num = 100000;
+    vertex_num = 1000000;
     
     vector<vec3> positions;
     positions.reserve(vertex_num);
@@ -28,6 +28,7 @@ void ofApp::draw(){
     shader.begin();
     shader.setUniform1f("time", ofGetElapsedTimef());
     shader.setUniform1i("vertex_num", vertex_num);
+    shader.setUniform3f("r_seed", vec3(ofRandom(1), ofRandom(1), ofRandom(1)));
     vbo.setMode(OF_PRIMITIVE_POINTS);
     vbo.draw();
     shader.end();
@@ -38,8 +39,8 @@ void ofApp::draw(){
 void ofApp::keyPressed(int key){
     switch (key) {
         case 'r':
-            ofSetWindowShape(1024, 1024);
             ofResetElapsedTimeCounter();
+            shader.load(dir.getPath(selected_shader), "frag.glsl");
             break;
             
         case 'n':
