@@ -10,3 +10,6 @@ build/
 *.xcodeproj/
 !*.xcodeproj/project.pbxproj
 [/sourcecode]
+
+# Other files
+bin/data/out/

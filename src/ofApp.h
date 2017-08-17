@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxExportImageSequence.h"
 
 using namespace glm;
 
@@ -30,4 +31,9 @@ class ofApp : public ofBaseApp{
     int selected_shader;
     
     int vertex_num;
+    array<vec4, 3> r_seeds;
+    vec2 mouse_pos;
+    
+    // ビデオのエクスポート
+    ofxExportImageSequence exp;
 };
